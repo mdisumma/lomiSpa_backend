@@ -8,7 +8,6 @@ const Services = (app) => {
 
 	client.connect();
 
-	console.log(client);
 	//READ SERVICES
 	app.get("/services", async (request, response) => {
 		const cursor = client.db("LOMISPA_DB").collection("services").find();
