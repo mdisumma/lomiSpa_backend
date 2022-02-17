@@ -13,7 +13,7 @@ const Services = (app) => {
 		const cursor = client.db("LOMISPA_DB").collection("services").find();
 		const result = await cursor.toArray();
 		// console.log(result);
-		response.json(result);
+		response.status(200).json(result);
 	});
 
 	//INSERT SERVICE
@@ -23,7 +23,7 @@ const Services = (app) => {
 			.collection("services")
 			.insertOne(request.body);
 		console.log(request.body);
-		response.json(request.body);
+		response.status(200).json(request.body);
 	});
 
 	//DELETE SERVICE
@@ -33,8 +33,10 @@ const Services = (app) => {
 			.collection("services")
 			.deleteOne(request.body);
 		console.log(request.body);
-		response.json(request.body);
+		response.status(200).json(request.body);
 	});
+
+	client.close();
 };
 
 export default Services;

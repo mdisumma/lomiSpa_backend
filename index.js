@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import Services from "./services.js";
+import Users from "./users.js";
 
 // EXPRESS
 const app = express();
@@ -12,6 +13,7 @@ app.use(cors());
 
 //SERVICES
 Services(app);
+Users(app);
 
 //ROUTER
 app.get("/", (req, res) => res.send(`server running on port ${PORT}`));
