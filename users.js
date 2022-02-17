@@ -8,7 +8,7 @@ const Users = (app) => {
 
 	client.connect();
 
-	//READ USERS
+	//LOGIN USERS
 	app.get("/users", async (request, response) => {
 		const result = await client.db("LOMISPA_DB").collection("users").findOne({
 			email: "",
