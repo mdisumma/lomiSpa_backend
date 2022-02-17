@@ -8,25 +8,43 @@ const Users = (app) => {
 
 	client.connect();
 
-	//LOGIN USERS
+	//USERS LIST
 	app.get("/users", async (request, response) => {
-		const result = await client.db("LOMISPA_DB").collection("users").findOne({
-			email: "",
-			password: "",
-		});
+		const cursor = client.db("LOMISPA_DB").collection("users").find();
+		const result = await cursor.toArray();
+		// console.log(result);
+		response.status(200).json(result);
+	});
+
+	//LOGIN USERS
+	app.get("/user", async (request, response) => {
+		const result = await client
+			.db("LOMISPA_DB")
+			.collection("users")
+			.findOne(request.body);
 
 		// console.log(result);
 		response.status(200).json(result);
 	});
 
 	//SINGUP USERS
-	app.post("/users", async (request, response) => {
+	app.post("/user", async (request, response) => {
 		const result = await client
 			.db("LOMISPA_DB")
 			.collection("users")
 			.insertOne(request.body);
 
 		// console.log(request.body);
+		response.status(200).json(request.body);
+	});
+
+	//DELETE USER
+	app.delete("/user", async (request, response) => {
+		const result = await client
+			.db("LOMISPA_DB")
+			.collection("users")
+			.deleteOne(request.body);
+		console.log(request.body);
 		response.status(200).json(request.body);
 	});
 
