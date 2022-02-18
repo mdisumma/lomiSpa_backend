@@ -17,13 +17,14 @@ const Users = (app) => {
 	});
 
 	//LOGIN USERS
-	app.get("/user", async (request, response) => {
+	app.post("/findUser", async (request, response) => {
 		const result = await client
 			.db("LOMISPA_DB")
 			.collection("users")
 			.findOne(request.body);
 
-		// console.log(result);
+		console.log(request.body);
+		console.log(result);
 		response.status(200).json(result);
 	});
 
@@ -34,7 +35,7 @@ const Users = (app) => {
 			.collection("users")
 			.insertOne(request.body);
 
-		// console.log(request.body);
+		console.log(request.body);
 		response.status(200).json(request.body);
 	});
 
