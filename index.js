@@ -1,12 +1,12 @@
 import express from "express";
 import cors from "cors";
-import path from "path";
-import { fileURLToPath } from "url";
 
 import Services from "./services.js";
 import Users from "./users.js";
 import Booking from "./booking.js";
 
+import path from "path";
+import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -30,8 +30,8 @@ Booking(app);
 
 //ROUTER
 app.get("/", (req, res) => res.send(`server running on port ${PORT}`));
-app.get("/", function (req, res) {
-	res.sendFile(path.join(__dirname, "build", "index.html"));
-});
+// app.get("/", function (req, res) {
+// 	res.sendFile(path.join(__dirname, "build", "index.html"));
+// });
 
 app.listen(PORT, () => console.log(`server running on port ${PORT}`));
