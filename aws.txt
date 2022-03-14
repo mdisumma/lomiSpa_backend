@@ -1,0 +1,3 @@
+
+
+ssh -i ~/.ssh/lomi-spa-key.pem ec2-user@ec2-3-10-208-236.eu-west-2.compute.amazonaws.com
