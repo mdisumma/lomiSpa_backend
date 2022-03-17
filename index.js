@@ -31,9 +31,7 @@ Users(app);
 Booking(app);
 
 //STRIPE PaymentGatway
-const stripe = new Stripe(
-	"sk_test_51KdsopL6aPjGx3LqwwEUvUnOTULQR7LZsEmerWieQErPvY0MZKTu9JdDOQclkcnJ8S7tM0M82r4Snn0vLmqx9sqb00QPuMH8Vg"
-);
+const stripe = new Stripe(process.env.STRIPE_SECRET_TEST);
 app.post("/payment", cors(), async (req, res) => {
 	let { amount, id } = req.body;
 	console.log(req.body);
